@@ -2,14 +2,14 @@
 
 Jianpu in Lilypond, from http://ssb22.user.srcf.net/mwrhome/jianpu-ly.html
 
-(also mirrored at http://ssb22.gitlab.io/mwrhome/jianpu-ly.html just in case)
+(also mirrored at http://ssb22.gitlab.io/mwrhome/jianpu-ly.html just in case, and available via `pip install jianpu-ly` or `pipx run jianpu-ly`)
 
 jianpu-ly is a Python program (compatible with both Python 2 and Python 3) that assists with printing jianpu (numbered musical notation) in the GNU Lilypond music typesetter. The jianpu is written on a modiﬁed-appearance “stave” in Lilypond, which means Lilypond’s typesetting capabilities (lyric spacing, slurs, beams etc) will apply to the jianpu without needing to add a 5-line stave. If you prefer, the generated code for the jianpu stave may also be placed in a score with other types of stave.
 
 Using jianpu-ly requires some technical knowledge.  If you don't know what a command line is, what a text editor is, what a directory is or what Python is, then please find out about these things before attempting to use jianpu-ly.  It is not an extension to Lilypond front-ends like Frescobaldi; it is a preprocessor that currently requires you to have command-line experience.
 
 If you have problems, try a different Lilypond version.
-jianpu-ly works with Lilypond 2.18, 2.20 and 2.22.
+jianpu-ly works with Lilypond 2.18, 2.20, 2.22 and 2.24.
 
 Run jianpu-ly < text-file > ly-file (or jianpu-ly text-files > ly-file)
 
@@ -22,6 +22,8 @@ Accidentals: `1 #1 2 b2 1`
 Octaves: `1,, 1, 1 1' 1''`
 
 Shortcuts for 1' and 2': `8 9`
+
+Change base octave: `< >`
 
 Semiquaver, quaver, crotchet (16/8/4th notes): `s1 q1 1`
 
@@ -55,11 +57,23 @@ Hanzi lyrics (auto space): `H: hanzi` (with or without spaces)
 
 Lilypond headers: `title=the title` (on a line of its own)
 
+Guitar chords: `chords=c2. g:7 c` (on own line)
+
+Fret diagrams: `frets=guitar` (on own line)
+
+Multiple parts: `NextPart`
+
+Instrument of current part: `instrument=Flute` (on a line of its own)
+
 Multiple movements: `NextScore`
 
 Prohibit page breaks until end of this movement: `OnePage`
 
 Suppress bar numbers: `NoBarNums`
+
+Suppress first-line indent: `NoIndent`
+
+Ragged last line: `RaggedLast`
 
 Old-style time signature: `SeparateTimesig 1=C 4/4`
 
@@ -85,27 +99,27 @@ Ties (like Lilypond's, if you don't want dashes): `1 ~ 1`
 
 Slurs (like Lilypond's): `1 ( 2 )`
 
+Erhu fingering (applies to previous note): `Fr=0 Fr=4`
+
+Erhu symbol (applies to previous note): `souyin harmonic up down bend tilde`
+
+Tremolo: `1/// - 1///5 -`
+
+Rehearsal letters: `letterA letterB`
+
+Multibar rest: `R*8`
+
 Dynamics (applies to previous note): `\p \mp \f`
 
 Other 1-word Lilypond \ commands: `\fermata \> \! \( \) etc`
 
+Text: `^"above note" _"below note"`
+
 Other Lilypond code: `LP: (block of code) :LP` (each delimeter at start of its line)
 
+Unicode approximation instead of Lilypond: `Unicode`
+
 Ignored: `% a comment`
-
-Erhu fingering shorthand (appears over previous note): `Fr=0 Fr=1 Fr=2 Fr=3 Fr=4`
-
-Erhu expression symbols (appears over previous note):
-```
-# Souyin
-Fr=久
-
-# Harmonic
-Fr=○
-
-# Pitch bends
-Fr=⤻ Fr=𝀈 Fr=↗ Fr=↘
-```
 
 
 Copyright and Trademarks
